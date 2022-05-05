@@ -26,6 +26,14 @@ class requests {
             console.log(err)
         }
     }
+    patch = async (url, body, headers) => {
+        try{
+            const response = await axios.patch(url, body, { 'headers': headers })
+            return response
+        }catch (err){
+            console.log(err)
+        }
+    }
 
     delete = async (url, headers) => {
         try{

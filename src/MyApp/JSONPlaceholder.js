@@ -7,12 +7,6 @@ const POSTS_URL = URL + 'posts'
 const headers = {
     'Content-Type': 'application/json',
 }
-const body = {
-    "userId": 1,
-
-    "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-    "body": "quia et suscipit\nsuscipit  consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-  }
 var id;
 
 
@@ -26,11 +20,12 @@ class JSONPlaceholder {
         return await requests.get(POSTS_URL, headers)
     }
 
-    createUser = async ()=>{
+    createUser = async (body,headers)=>{
        return await requests.post(POSTS_URL,body,headers)
     }
-    deleteUser = async(id) => {
-        return await requests.delete(USERS_URL+`/${id}`)
+    updateUser = async(id,body,header) => {
+  
+        return await requests.patch(POSTS_URL+`/${id}`,body,header)
     }
 
     deletePost = async(id) => {
@@ -42,17 +37,15 @@ class JSONPlaceholder {
         return body
     }
 
-    async findPost(username, title) {
+    async findPost(body, title) {
 
         return id
     }
 
-    // updateUser = async (id) => {
-    //     return await requests.put(POSTS_URL, UPDATE_USER_BODY, headers)
-    // }
+    
 
-    updatePost = async (username, title, newContent) => {
-        let id = await this.findPost(username, title)
+    updatePost = async (body, title, newContent) => {
+        let id = await this.findPost(body, title)
         return await requests.put(POSTS_URL, this.generateNewPostContent(id, newContent), headers)
     }
 }

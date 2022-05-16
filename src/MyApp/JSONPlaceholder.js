@@ -58,6 +58,7 @@ class JSONPlaceholder {
         id = el.id;
       }
     });
+    console.log('idul din find post by title method'+ id)
     return id;
   }
 

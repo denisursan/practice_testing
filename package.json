@@ -12,7 +12,8 @@
   },
   "scripts": {
     "test1": "echo \"Error: no test specified\" && exit 1",
-    "test": "npx mocha ./test/**/*.js --timeout=30000"
+    "test": "npx mocha ./test/**/*.js --timeout=30000",
+    "testGraphQL": "npx mocha ./test/GraphQL/test.spec.js --timeout=30000"
   },
   "repository": {
     "type": "git",

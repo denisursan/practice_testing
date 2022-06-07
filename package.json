@@ -8,11 +8,12 @@
     "chai": "^4.3.6",
     "chai-json-schema": "^1.5.1",
     "cypress": "^9.6.0",
-    "mocha": "^10.0.0"
+    "mocha": "^10.0.0",
+    "sinon-chai": "^3.7.0"
   },
   "scripts": {
     "test1": "echo \"Error: no test specified\" && exit 1",
-    "test": "npx mocha ./test/**/*.js --timeout=30000",
+    "test": "npx mocha ./cypress/integration --timeout=30000",
     "testGraphQL": "npx mocha ./test/GraphQL/test.spec.js --timeout=30000"
   },
   "repository": {

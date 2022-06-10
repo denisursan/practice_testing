@@ -1,6 +1,8 @@
 describe('Test Contact Us form via WebdriverUni', () => {
-    it('Should be able to submit a succesful submission via contact us form', () => {
+    beforeEach(()=>{
         cy.visit('https://webdriveruniversity.com/')
+    })
+    it('Should be able to submit a succesful submission via contact us form', () => {
         cy.get('#contact-us').invoke('removeAttr','target').click()
         cy.url().should('include','contactus')
         cy.go('back')
@@ -11,7 +13,6 @@ describe('Test Contact Us form via WebdriverUni', () => {
     });
 
     it('Should be able to click on to do list and to go back to main page', () => {
-        cy.visit('https://webdriveruniversity.com/')
         cy.get('#to-do-list').invoke('removeAttr','target').click()
         cy.url().should('include','To-Do-List')
         cy.go('back')

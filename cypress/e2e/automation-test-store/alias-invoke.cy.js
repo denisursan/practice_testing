@@ -1,21 +1,21 @@
 const { expect } = require("chai");
-
+/// <reference types="cypress" />
 describe('Alias and invoke', () => {
-    it('validate a specific hair product', () => {
+    beforeEach(()=>{
         cy.visit('https://automationteststore.com/')
+    })
+    it('validate a specific hair product', () => {
         cy.get("a[href*='product/category&path=']").contains("Hair Care").click()
         cy.get('.fixed_wrapper .prdocutname').eq(0).invoke('text').as('productName')
         cy.get('@productName').its('length').should('be.gt', 5)
         cy.get('@productName').should('eq', 'Seaweed Conditioner')
     });
     it('validate a specific hair product', () => {
-        cy.visit('https://automationteststore.com/')
         cy.get(".thumbnail").as('productName')
         cy.get('@productName').its('length').should('eq', 16)
         cy.get('@productName').find('.productcart').invoke('attr', 'title').should('eq', 'Add to Cart')
     });
-    it('Calculate total of normal and sale products', () => {
-        cy.visit('https://automationteststore.com/')
+    it.only('Calculate total of normal and sale products', () => {
         cy.get(".thumbnail").as('productName')
         // cy.get('@productName').find('.oneprice').each(($el) => {
         //     cy.log($el.text())

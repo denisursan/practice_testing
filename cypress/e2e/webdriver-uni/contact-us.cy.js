@@ -1,7 +1,9 @@
 /// <reference types="cypress" />
 describe('Test Contact Us form via WebdriverUni', () => {
-    it('Should be able to submit a succesful submission via contact us form', () => {
+    beforeEach(()=>{
         cy.visit('https://webdriveruniversity.com/')
+    })
+    it('Should be able to submit a succesful submission via contact us form', () => {
         cy.get('#contact-us').invoke('removeAttr','target').click()
         cy.get('[name="first_name"]').type('Joe')
         cy.get('[name="last_name"]').type('Smith')
@@ -13,7 +15,6 @@ describe('Test Contact Us form via WebdriverUni', () => {
         cy.url().should('eq','https://webdriveruniversity.com/Contact-Us/contact-form-thank-you.html')
     });
     it('Should not be able to submit a succesful submission via contact us form as all field are required', () => {
-        cy.visit('https://webdriveruniversity.com/')
         cy.get('#contact-us').invoke('removeAttr','target').click()
         cy.get('[name="first_name"]').type('Joe')
         cy.get('[name="last_name"]').type('Smith')

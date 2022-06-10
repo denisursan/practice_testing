@@ -4,8 +4,10 @@ const sinonChai = require('sinon-chai')
 chai.use(sinonChai)
 /// <reference types="cypress" />
 describe('Handle js alerts', () => {
-    it('Confirm js alerts contains text', () => {
+    beforeEach(()=>{
         cy.visit('https://webdriveruniversity.com/')
+    })
+    it('Confirm js alerts contains text', () => {
         cy.get('#popup-alerts').invoke('removeAttr', 'target').click()
         cy.get('#button4').click()
         cy.on('window:confirm', (str) => {
@@ -15,7 +17,6 @@ describe('Handle js alerts', () => {
     });
 
     it('Confirm js alerts contains text and cancel it ', () => {
-        cy.visit('https://webdriveruniversity.com/')
         cy.get('#popup-alerts').invoke('removeAttr', 'target').click()
         cy.get('#button4').click()
         cy.on('window:confirm', (str) => {
@@ -24,7 +25,6 @@ describe('Handle js alerts', () => {
         cy.get('#confirm-alert-text').should('have.text', 'You pressed Cancel!')
     });
     it.only('Confirm js alerts contains text and stub it ', () => {
-        cy.visit('https://webdriveruniversity.com/')
         cy.get('#popup-alerts').invoke('removeAttr', 'target').click()
         const stub = cy.stub()
         cy.on('window:confirm', stub)

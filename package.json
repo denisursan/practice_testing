@@ -7,13 +7,12 @@
     "axios": "^0.27.2",
     "chai": "^4.3.6",
     "chai-json-schema": "^1.5.1",
-    "cypress": "^9.6.0",
     "mocha": "^10.0.0",
     "sinon-chai": "^3.7.0"
   },
   "scripts": {
     "test1": "echo \"Error: no test specified\" && exit 1",
-    "test": "npx mocha ./cypress/integration --timeout=30000",
+    "test": "cypress run --browser chrome cypress/e2e/*.cy.js",
     "testGraphQL": "npx mocha ./test/GraphQL/test.spec.js --timeout=30000"
   },
   "repository": {
@@ -25,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/denisursan/practice_testing/issues"
   },
-  "homepage": "https://github.com/denisursan/practice_testing#readme"
+  "homepage": "https://github.com/denisursan/practice_testing#readme",
+  "devDependencies": {
+    "cypress": "^10.0.3"
+  }
 }

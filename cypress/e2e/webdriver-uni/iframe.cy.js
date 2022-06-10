@@ -1,7 +1,9 @@
 /// <reference types="cypress" />
 describe('Handling Iframes $ Modals', () => {
-    it('Handle webdriverunit iframe and modal', () => {
+    beforeEach(()=>{
         cy.visit('https://webdriveruniversity.com/')
+    })
+    it('Handle webdriverunit iframe and modal', () => {
         cy.get('#iframe').invoke('removeAttr', 'target').click()
         cy.get('#frame').then($iframe => {
             const body = $iframe.contents().find('body')

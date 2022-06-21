@@ -13,7 +13,9 @@
   "scripts": {
     "test1": "echo \"Error: no test specified\" && exit 1",
     "test": "cypress run --browser chrome cypress/e2e/*.cy.js",
-    "testGraphQL": "npx mocha ./test/GraphQL/test.spec.js --timeout=30000"
+    "testGraphQL": "npx mocha ./test/GraphQL/test.spec.js --timeout=30000",
+    "cypress-multi-browser" : "npm run test -- --browser electron --headed & npm run test -- --browser chrome --headed ",
+    "run-tests-in-staging" : "npx cypress run --config-file cypress/config/staging.config.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +28,7 @@
   },
   "homepage": "https://github.com/denisursan/practice_testing#readme",
   "devDependencies": {
-    "cypress": "^10.0.3"
+    "cypress": "^10.1.0",
+    "cypress-file-upload": "^5.0.8"
   }
 }

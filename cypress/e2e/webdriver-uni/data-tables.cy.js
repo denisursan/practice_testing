@@ -9,7 +9,7 @@ describe('Handling data-tables', () => {
         let numb = 0;
         cy.get('#thumbnail-1 td').each(($el, index, $list) => {
             userDetails[index] = $el.text();
-            // cy.log(userDetails[index])
+             cy.log(userDetails[index])
         }).then(() => {
             var i;
             for (i = 0; i < userDetails.length; i++) {
@@ -23,19 +23,20 @@ describe('Handling data-tables', () => {
     });
     it.only('calculate and assert the age of a given user based on the last name', () => {
         cy.get('#thumbnail-1 tr td:nth-child(2)').each(($el, index, $list) => {
-            const string = $el.text()
-            const newString = string.toString()
-            var userNames = newString.split(/(?=[A-Z])/)
-            console.log(userNames)
+            const elements = $el.text()
+            cy.log(elements)
+           var userNames = elements.split(/(?=[A-Z])/)
+            console.log("user names list ",userNames)
             var i;
             for (i = 0; i < userNames.length; i++) {
                 if (userNames.includes(userNames[i])) {
-                    cy.log(userNames[i])
+                    console.log(userNames[i])
                     cy.get('#thumbnail-1 tr td:nth-child(2)').eq(index).next().as('valueNumber')
                     cy.get('@valueNumber').should(($expectedText) => {
+                        const givenText = $expectedText.text()
                         const text = $expectedText.text()
-                        console.log(text)
-                        expect(text).to.include(text)
+                        console.log("ages for users", text)
+                        expect(text).to.include(givenText)
 
                     })
                 }
